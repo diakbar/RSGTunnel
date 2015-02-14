@@ -1,2 +1,2 @@
 #!/bin/bash
-asda
+echo "RSG script tunnel"
