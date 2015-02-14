@@ -7,4 +7,4 @@ echo "$0"
 
 source config
 
-screen -dmSL workstuff expect ssh.exp $rsgIP $username $password
+screen -dmS workstuff expect ssh.exp $rsgIP $username $password
