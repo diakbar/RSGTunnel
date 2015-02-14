@@ -1,0 +1,22 @@
+#!/usr/bin/expect
+#!/usr/bin/tclsh
+
+if { $::argc >= 1 } {
+    set i 0; foreach n $argv {set [incr i] $n}
+} else {
+    puts "no or more than one argument passed, please insert one argument"
+	puts "Usage: PT-sftp-SSR.tcl [SSR] "
+    exit
+}
+
+set timeout 600
+puts "start ssh to RSG Server $1"
+spawn ssh -oStrictHostKeyChecking=no -D0.0.0.0:1703 $2@$1
+puts "enter password $3"
+expect -re {.*assword\:}
+send "$3\r"
+puts "start ssh to tsel3gssg\r"
+expect -re ">"
+exp_send "ssh tsel3gssg\r"
+expect -re ">"
+interact -o "output_from_spawned_process" return
