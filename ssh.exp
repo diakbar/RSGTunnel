@@ -11,7 +11,7 @@ if { $::argc >= 1 } {
 
 set timeout 600
 puts "start ssh to RSG Server $1"
-spawn ssh -oStrictHostKeyChecking=no -D0.0.0.0:1703 $2@$1
+spawn ssh -oStrictHostKeyChecking=no -D0.0.0.0:7531 $2@$1
 puts "enter password $3"
 expect -re {.*assword\:}
 send "$3\r"
